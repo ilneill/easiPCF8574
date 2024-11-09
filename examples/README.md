@@ -16,7 +16,7 @@ A small sketch that continuously polls a PCF8574 and reads the values of buttons
 ## Example - Read (interrupt) some buttons attached to a PCF8574 module and toggle an LED.
 File: /pcfInterrupt/pcfInterrupt.ino
 
-A quick sketch that uses an ISR to detect when buttons connected to PCF8574 pins change status. When a button is pressed and LED is toggled.
+A quick sketch that uses the PCF8574 INT pin and an ISR to detect when buttons connected to PCF8574 pins change status. When a button is pressed and LED is toggled.
 
 
 // EOF

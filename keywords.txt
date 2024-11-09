@@ -2,26 +2,27 @@
 # Datatypes (KEYWORD1)
 #######################################
 
-PCF	KEYWORD1
+PCF8574	KEYWORD1
 
 #######################################
 # Methods and Functions (KEYWORD2)
 #######################################
 
-lookForDevice KEYWORD2
-setClock KEYWORD2
-reset KEYWORD2
-setup KEYWORD2
-write KEYWORD1
-read KEYWORD1
+begin KEYWORD2
+read KEYWORD2
+write KEYWORD2
+attachInt KEYWORD2
+detachInt KEYWORD2
 digitalRead	KEYWORD2
 digitalWrite KEYWORD2
+digitalToggle KEYWORD2
 
 #######################################
 # Constants (LITERAL1)
 #######################################
 
 DEFAULT_I2C_ADDRESS LITERAL1
+DEFAULT_PCF_IO_MASK LITERAL1
 PCF_GPIO0 LITERAL1
 PCF_GPIO1 LITERAL1
 PCF_GPIO2 LITERAL1
@@ -30,5 +31,4 @@ PCF_GPIO4 LITERAL1
 PCF_GPIO5 LITERAL1
 PCF_GPIO6 LITERAL1
 PCF_GPIO7 LITERAL1
-CHECK_BIT_HIGH LITERAL1
 

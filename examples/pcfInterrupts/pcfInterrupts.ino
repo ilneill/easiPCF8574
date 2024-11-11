@@ -80,7 +80,7 @@ void loop() {
     for(binCounter = 7; binCounter > 0; binCounter--) {
       Serial.print((pcfPinStatus >> binCounter) & 0x01 ? "1" : "0");
     }
-    Serial.println((pcfPinStatus) & 0x01 ? "1" : "0
+    Serial.println((pcfPinStatus) & 0x01 ? "1" : "0");
     
     // Clear our interrupt status flag.
     pcfEvent = false;

@@ -30,7 +30,7 @@
 PCF8574 myPCFModule(0x20);                // The PCF8574 module is configured with I2C address 0x20.
 
 void setup() {
-  Serial.begin(9600);                     // The baudrate of Serial monitor is set to 9600baud.
+  Serial.begin(9600);                     // The baudrate of Serial monitor is set to 9600 baud.
   while(!Serial);                         // Wait for Serial port to be ready.
   
   if(!myPCFModule.begin(PCF_ALL_HIGH)) {  // Set all the PCF8574 module pins to HIGH.

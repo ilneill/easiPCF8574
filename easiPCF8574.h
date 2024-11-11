@@ -43,7 +43,7 @@
       PCF8574(uint8_t i2cAddress = DEFAULT_PCF_ADDRESS);
       bool begin(uint8_t ioMask = DEFAULT_PCF_IO_MASK);
       #ifdef INCLUDE_PCF_INT_FUNCS
-        bool begin(uint8_t, uint8_t, void (*interruptFunction)());
+        bool begin(uint8_t, void (*interruptFunction)(), uint8_t ioMask = DEFAULT_PCF_IO_MASK);
         void attachInt(uint8_t, void (*interruptFunction)());
         void detachInt();
       #endif

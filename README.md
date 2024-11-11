@@ -4,7 +4,7 @@ This is a very simple Arduino Library to control the PCF8574 and PCF8574A 8-Bit 
 
 ![Common PCF8574 Chip](images/PCF8574.png)
 
-The PCF8574 is a small IC that provides 8 general purpose I/O lines that are accessed and controlled via the I2C-bus. With its flexible addressing you can access up 128 I/O lines (8x PCF8574's + 8x PCF8574A's) all on the same 2-wire (and Power & Gnd, of course) I2C bus!
+The PCF8574 is a small IC that provides 8 general purpose I/O lines that are accessed and controlled via the I2C-bus. With its flexible addressing you can access up 128 I/O lines (8x PCF8574's + 8x PCF8574A's), all on the same 2-wire (and Power & Gnd, of course) I2C bus!
 
 
 ## Contents
@@ -51,10 +51,10 @@ __PCF8574(uint8_t i2cAddress = 0x20);__
 
 ### Functions:
 __bool    begin(uint8_t ioMask = 0xff);__
-* Set the I/O pins as input (1, high) or output (0/1, low/high). Returns TRUE if successful.
+* Set all the I/O pins as inputs (1, HIGH) or outputs (0/1, LOW/HIGH). Returns TRUE if successful.
 
-__bool    begin(uint8_t ioMask = 0xff, uint8_t interruptPin, void (*interruptFunction)()));__
-* Set the I/O pins as input, and attach an ISR for HIGH -> LOW transition on an Arduino pin. Returns TRUE if successful.
+__bool    begin(uint8_t interruptPin, void (*interruptFunction)()), uint8_t ioMask = 0xff);__
+* Set all the I/O pins as inputs/outputs, and attach an ISR for HIGH -> LOW transition on an Arduino pin. Returns TRUE if successful.
 
 __void    attachInt(uint8_t interruptPin, void (*interruptFunction)()));__
 * Manually attach an ISR for HIGH -> LOW transitions on an Arduino hardware interrupt pin. Returns nothing.

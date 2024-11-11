@@ -40,7 +40,7 @@ bool PCF8574::begin(uint8_t ioMask) {
 
 #ifdef INCLUDE_PCF_INT_FUNCS
   // Set up the PCF register I/O directions and attach an interrupt handler for the PCF8574 INT pin.
-  bool PCF8574::begin(uint8_t ioMask, uint8_t interruptPin, void (*interruptFunction)()) {
+  bool PCF8574::begin(uint8_t interruptPin, void (*interruptFunction)(), uint8_t ioMask) {
       bool result;
       result = this->write(ioMask) == 0 ? true : false;
       if(result) {                                // Only attach the ISR if the PCF8574 was found.

@@ -45,11 +45,11 @@ volatile unsigned int intCount = 0;
 PCF8574 myPCFModule(0x20);                // The PCF8574 module is configured with I2C address 0x20.
 
 void setup() {
-  Serial.begin(9600);                     // The baudrate of Serial monitor is set to 9600baud.
+  Serial.begin(9600);                     // The baudrate of Serial monitor is set to 9600 baud.
   while(!Serial);                         // Wait for Serial port to be ready.
 
   // Set all the PCF8574 module pins to HIGH, and setup an interrupt service routine for the PCF8574 INT pin.
-  if(!myPCFModule.begin(PCF_ALL_HIGH, ARDUINO_INT_PIN, checkInt)) {
+  if(!myPCFModule.begin(ARDUINO_INT_PIN, checkInt, PCF_ALL_HIGH)) {
     Serial.print("Error: PCF8574 module problem!");
     while(true);                          // Stop here - no point continuing...
   }

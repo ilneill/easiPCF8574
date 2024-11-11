@@ -53,10 +53,10 @@ __PCF8574(uint8_t i2cAddress = 0x20);__
 __bool    begin(uint8_t ioMask = 0xff);__
 * Set all the I/O pins as inputs (1, HIGH) or outputs (0/1, LOW/HIGH). Returns TRUE if successful.
 
-__bool    begin(uint8_t interruptPin, void (*interruptFunction)()), uint8_t ioMask = 0xff);__
+__bool    begin(uint8_t interruptPin, void (*interruptFunction)(), uint8_t ioMask = 0xff);__
 * Set all the I/O pins as inputs/outputs, and attach an ISR for HIGH -> LOW transition on an Arduino pin. Returns TRUE if successful.
 
-__void    attachInt(uint8_t interruptPin, void (*interruptFunction)()));__
+__void    attachInt(uint8_t interruptPin, void (*interruptFunction)());__
 * Manually attach an ISR for HIGH -> LOW transitions on an Arduino hardware interrupt pin. Returns nothing.
 
 __void    detachInt();__

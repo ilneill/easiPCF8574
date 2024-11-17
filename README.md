@@ -7,6 +7,13 @@ This is a very simple Arduino Library to control the PCF8574 and PCF8574A 8-Bit 
 The PCF8574 is a small IC that provides 8 general purpose I/O lines that are accessed and controlled via the I2C-bus. With its flexible addressing you can access up 128 I/O lines (8x PCF8574's + 8x PCF8574A's), all on the same 2-wire (and Power & Gnd, of course) I2C bus!
 
 
+## Why... Why Indeed?
+
+Another project I am working on (A Kim-1 Mega Emulator) has a lot of rabbit holes that I am compelled to go down.
+
+One such rabbit hole is trying and testing libraries and hardware for some keypad input and LCD output. I am testing on an Arduino Mini Pro (it was what I had to hand), and for the keypad input I needed more I/O than this Arduino had. I had some PCF8574 modules in stock as they are super handy with LCD screens, but they are actually just general purpose I2C 8-bit I/O expanders. After trying a lot of existing PCF8574 libraries, none were ticking all the boxes for what I wanted to achieve, and how I wanted to achieve it. So, I decided to write my own libary for the PCF8574, doing exactly what I wanted, how I wanted it to be done, keeping it simple and without any unnecessary "features".
+
+
 ## Contents
 
 1. [Library Features](https://github.com/ilneill/easiPCF8574/#library-features)
@@ -14,8 +21,10 @@ The PCF8574 is a small IC that provides 8 general purpose I/O lines that are acc
 3. [API Details](https://github.com/ilneill/easiPCF8574/#api-details)
 4. [PCF8574 Chip Pinouts](https://github.com/ilneill/easiPCF8574/#pcf8574-chip-pinouts)
 5. [A Common PCF8574 Module](https://github.com/ilneill/easiPCF8574/#a_common-pcf8574-module)
-6. [Hardware Interrupt setup](https://github.com/ilneill/easiPCF8574/#hardware-interrupt-setup) 
-7. [References](https://github.com/ilneill/easiPCF8574/#references)
+6. [Hardware Interrupt Setup](https://github.com/ilneill/easiPCF8574/#hardware-interrupt-setup)
+7. [Example Hardware Build](https://github.com/ilneill/easiPCF8574/#example_hardware_build)
+8. [ToDo](https://github.com/ilneill/easiPCF8574/#todo)
+9. [References](https://github.com/ilneill/easiPCF8574/#references)
 
 
 ## Library Features
@@ -131,6 +140,23 @@ Every time a PCF8574 I/O pin changes its status, the PCF8574 clears the INT pin 
 You can use the interrupt feature, as an alternative to polling, to control how the Arduino deals with PCF8574 input events.
 
 
+## Example Hardware Build
+
+Everything I have written has been tested using an Arduino Mini Pro (ATmega168P) development board with an FT232 USB Serial adapter, and and compiled using Arduino IDE v2.3.3.
+
+![An Arduino Mini Pro (ATmega168P)](images/ArduinoMiniPro.jpg)
+
+This is the breadboard build I used while testing the "pcfReadButtonsDebounced.ino" example.
+
+![Test Build for One of the Example Sketches](images/ArduinoMiniPro+PCF8574.jpg)
+
+
+## ToDo
+
+Is there? Let me know if you find a problem or think of any improvements!
+
+
+
 ## References 
 
 Other PCF8574 Arduino libraries that I was inspired by:
@@ -145,6 +171,12 @@ The PCF8574/PCF8574A Datasheet:
 
 A useful Internet tutorial:
 * [Expand Arduino’s IO - Interfacing PCF8574 with Arduino](https://www.electronicshub.org/interfacing-pcf8574-with-arduino/)
-  
-  
+
+And the **GOTO** Guide for Markdown Syntax:
+* https://www.markdownguide.org/cheat-sheet/
+
+
+*Enjoy!*
+
+
 // EOF

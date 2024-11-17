@@ -1,6 +1,6 @@
 # PCF8574 Library Example Sketches
 
-All examples were tested using an Arduino Mini Pro (ATmega168P) development board with an FT232 USB Serial adapter, and and compiled using Arduino IDE v2.3.3.
+All examples were tested using an Arduino Mini Pro (ATmega168P) development board with an FT232 USB Serial adapter, and compiled using Arduino IDE v2.3.3.
 
 ## Example - Blink some LEDs attached to a PCF8574 module.
 __Sketch: /pcfBlinkLEDs/pcfBlinkLEDs.ino__

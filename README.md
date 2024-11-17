@@ -142,7 +142,7 @@ You can use the interrupt feature, as an alternative to polling, to control how 
 
 ## Example Hardware Build
 
-Everything I have written has been tested using an Arduino Mini Pro (ATmega168P) development board with an FT232 USB Serial adapter, and and compiled using Arduino IDE v2.3.3.
+Everything I have written has been tested using an Arduino Mini Pro (ATmega168P) development board with an FT232 USB Serial adapter, and compiled using Arduino IDE v2.3.3.
 
 ![An Arduino Mini Pro (ATmega168P)](images/ArduinoMiniPro.jpg)
 

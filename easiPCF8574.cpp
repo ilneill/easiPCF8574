@@ -4,6 +4,7 @@
  *
  * The PCF8574 is a simple I2C bus 8-bit I/O module.
  *
+ * Written for the Arduino Uno/Nano/Mega.
  * (c) 2024 Ian Neill, arduino@binaria.co.uk
  * Licence: MIT
  *
@@ -24,9 +25,13 @@
 
 #include "easiPCF8574.h"
 
+/**************************/
+/* Public Class Functions */
+/**************************/
+
 // Class constructor.
 PCF8574::PCF8574(uint8_t i2cAddress) {
-    Wire.begin(); //creates a Wire object
+    Wire.begin(); // Creates a Wire object.
     this->_pcfAddress = i2cAddress;               // Record the I2C address.
     this->_pcfRegister = DEFAULT_PCF_IO_MASK;     // Default is that all pins are inputs.
 }
@@ -72,7 +77,8 @@ bool PCF8574::begin(uint8_t ioMask) {
 // Read 8 bits from the PCF register.
 uint8_t PCF8574::read() {
   uint8_t result;
-  result = Wire.requestFrom(this->_pcfAddress, (uint8_t)1);// Request 1 byte from the device.
+  // Request 1 byte of data from the device.
+  result = Wire.requestFrom(this->_pcfAddress, (uint8_t)1);
   if(result > 0) {
     result = Wire.read();                         // Get the byte if it was returned.
   }

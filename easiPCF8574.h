@@ -4,6 +4,7 @@
  *
  * The PCF8574 is a simple I2C bus 8-bit I/O module.
  *
+ * Written for the Arduino Uno/Nano/Mega.
  * (c) 2024 Ian Neill, arduino@binaria.co.uk
  * Licence: MIT
  *
@@ -40,24 +41,27 @@
 
   class PCF8574 {
     public:
-      PCF8574(uint8_t i2cAddress = DEFAULT_PCF_ADDRESS);
+      // PCF8574 Class instantiation.
+      PCF8574(uint8_t i2cAd dress = DEFAULT_PCF_ADDRESS);
+      // Set up the PCF register I/O directions.
       bool begin(uint8_t ioMask = DEFAULT_PCF_IO_MASK);
       #ifdef INCLUDE_PCF_INT_FUNCS
+        // Set up the PCF register I/O directions and attach an interrupt handler for the PCF8574 INT pin.
         bool begin(uint8_t, void (*interruptFunction)(), uint8_t ioMask = DEFAULT_PCF_IO_MASK);
-        void attachInt(uint8_t, void (*interruptFunction)());
-        void detachInt();
+        void attachInt(uint8_t, void (*interruptFunction)()); // Manually attach an interrupt handler for the PCF8574 INT pin.
+        void detachInt();                                     // Manually detach an interrupt handler for the PCF8574 INT pin.
       #endif
-      uint8_t read();
-      uint8_t write(uint8_t);
-      bool digitalRead(uint8_t);
-      uint8_t digitalWrite(uint8_t, bool);
-      uint8_t digitalToggle(uint8_t);
+      uint8_t read();                                         // Read 8 bits from the PCF register.
+      uint8_t write(uint8_t);                                 // Write 8 bits to the PCF register - Return: 0 = success, 1 = transmission error, 2 = address error.
+      bool digitalRead(uint8_t);                              // Read the digital value of a specific pin.
+      uint8_t digitalWrite(uint8_t, bool);                    // Write a digital value to a specific pin.
+      uint8_t digitalToggle(uint8_t);                         // Toggle a digital value of a specific pin.
     private:
-      uint8_t _pcfAddress;
-      uint8_t _pcfRegister;
+      uint8_t _pcfAddress;                                    // The PCF8574 I2C address.
+      uint8_t _pcfRegister;                                   // The current value of the PCF8574 I/O register.
       #ifdef INCLUDE_PCF_INT_FUNCS
-        uint8_t _intPin = 255;
-        bool _intEnabled = false;
+        uint8_t _intPin = 255;                                // The Arduino pin that the interrupt handler is attached to.
+        bool _intEnabled = false;                             // The interrupt handler enabled flag.
       #endif
   };
 

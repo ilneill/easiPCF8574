@@ -11,7 +11,7 @@ The PCF8574 is a small IC that provides 8 general purpose I/O lines that are acc
 
 Another project I am working on (A Kim-1 Mega Emulator) has a lot of rabbit holes that I am compelled to go down.
 
-One such rabbit hole is trying and testing libraries and hardware for some keypad input and LCD output. I am testing on an Arduino Mini Pro (it was what I had to hand), and for the keypad input I needed more I/O than this Arduino had. I had some PCF8574 modules in stock as they are super handy with LCD screens, but they are actually just general purpose I2C 8-bit I/O expanders. After trying a lot of existing PCF8574 libraries, none were ticking all the boxes for what I wanted to achieve, and how I wanted to achieve it. So, I decided to write my own libary for the PCF8574, doing exactly what I wanted, how I wanted it to be done, keeping it simple and without any unnecessary "features".
+One such rabbit hole is trying and testing libraries and hardware for some keypad input and LED/LCD output. I am mostly testing on an Arduino Mini Pro (it was what I had to hand), but I also am using an Arduino Mega (it was beside the Mini Pro), and for the keypad input I needed more I/O than the Mini Pro had. I had some PCF8574 modules in stock as they are super handy with LCD screens, but they are actually just general purpose I2C 8-bit I/O expanders. After trying a lot of existing PCF8574 libraries, none were ticking all the boxes for what I wanted to achieve, and how I wanted to achieve it. So, I decided to write my own library for the PCF8574, doing exactly what I wanted, how I wanted it to be done, keeping it simple and without any unnecessary "features".
 
 
 ## Contents
@@ -20,9 +20,9 @@ One such rabbit hole is trying and testing libraries and hardware for some keypa
 2. [Library Installation](https://github.com/ilneill/easiPCF8574/#library-installation)
 3. [API Details](https://github.com/ilneill/easiPCF8574/#api-details)
 4. [PCF8574 Chip Pinouts](https://github.com/ilneill/easiPCF8574/#pcf8574-chip-pinouts)
-5. [A Common PCF8574 Module](https://github.com/ilneill/easiPCF8574/#a_common-pcf8574-module)
+5. [A Common PCF8574 Module](https://github.com/ilneill/easiPCF8574/#a-common-pcf8574-module)
 6. [Hardware Interrupt Setup](https://github.com/ilneill/easiPCF8574/#hardware-interrupt-setup)
-7. [Example Hardware Build](https://github.com/ilneill/easiPCF8574/#example_hardware_build)
+7. [Example Hardware Build](https://github.com/ilneill/easiPCF8574/#example-hardware-build)
 8. [ToDo](https://github.com/ilneill/easiPCF8574/#todo)
 9. [References](https://github.com/ilneill/easiPCF8574/#references)
 
@@ -59,16 +59,16 @@ __PCF8574(uint8_t i2cAddress = 0x20);__
 * Create a PCF8574 instance.
 
 ### Functions:
-__bool    begin(uint8_t ioMask = 0xff);__
+__bool begin(uint8_t ioMask = 0xff);__
 * Set all the I/O pins as inputs (1, HIGH) or outputs (0/1, LOW/HIGH). Returns TRUE if successful.
 
-__bool    begin(uint8_t interruptPin, void (*interruptFunction)(), uint8_t ioMask = 0xff);__
+__bool begin(uint8_t interruptPin, void (*interruptFunction)(), uint8_t ioMask = 0xff);__
 * Set all the I/O pins as inputs/outputs, and attach an ISR for HIGH -> LOW transition on an Arduino pin. Returns TRUE if successful.
 
-__void    attachInt(uint8_t interruptPin, void (*interruptFunction)());__
+__void attachInt(uint8_t interruptPin, void (*interruptFunction)());__
 * Manually attach an ISR for HIGH -> LOW transitions on an Arduino hardware interrupt pin. Returns nothing.
 
-__void    detachInt();__
+__void detachInt();__
 * Manually detach the ISR from the Arduino pin. Returns nothing.
 
 __uint8_t read();__
@@ -77,7 +77,7 @@ __uint8_t read();__
 __uint8_t write(uint8_t value);__
 * Write all the PCF8574 pin values in a single byte. Returns 0 = success, 1 = transmission error, 2 = address error.
 
-__bool    digitalRead(uint8_t pin);__
+__bool digitalRead(uint8_t pin);__
 * Read the value of a single PCF8574 pin. Returns the value read from the PCF8574 pin, 0 = LOW (FALSE), 1 = HIGH (TRUE).
 
 __uint8_t digitalWrite(uint8_t pin, bool value);__
@@ -90,7 +90,7 @@ __uint8_t digitalToggle(uint8_t pin);__
 ## PCF8574 Chip Pinouts
 
 | DIP16 |  SO16 | SSOP20 | 
-| ----- | ----- | ------ | 
+|-------|-------|--------| 
 | ![DIP16](images/PCF8574-01(DIP16).png)| ![SOP16](images/PCF8574-02(SO16).png) | ![SSOP20](images/PCF8574-03(SSOP20).png) | 
 
 
@@ -153,7 +153,7 @@ This is the breadboard build I used while testing the "pcfReadButtonsDebounced.i
 
 ## ToDo
 
-Is there? Let me know if you find a problem or think of any improvements!
+Is there anything? Let me know if you find a problem or think of any improvements!
 
 
 
